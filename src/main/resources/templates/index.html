@@ -4,5 +4,19 @@
     <meta charset="UTF-8">
     <title>Recipes Index Page</title>
 </head>
-<body> My Lovely Recipes 1234 </body>
+<body>
+<h2>My Recipes</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+    </tr>
+    <tbody>
+    <tr th:each="recipe : ${recipes}">
+        <td th:text="${recipe.id}">1</td>
+        <td th:text="${recipe.description}">Cake</td>
+    </tr>
+    </tbody>
+</table>
+</body>
 </html>
