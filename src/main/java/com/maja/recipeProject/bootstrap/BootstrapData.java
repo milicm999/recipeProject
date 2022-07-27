@@ -4,6 +4,7 @@ import com.maja.recipeProject.entities.*;
 import com.maja.recipeProject.repositories.CategoryRepository;
 import com.maja.recipeProject.repositories.RecipeRepository;
 import com.maja.recipeProject.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -13,7 +14,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+
+@Slf4j
 @Component
 public class BootstrapData implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -30,6 +32,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
+        log.debug("Loading bootstrap data");
     }
 
     public List<Recipe> getRecipes()
